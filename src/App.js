@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import s from "./style.module.css";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={s.main_container}>
+      <div className={s.header}>
+          <div className="row">
+            <div className="col-4">
+              <div>Logo</div>
+              <div>subtitle</div>
+            </div>
+            <div className="col-md-12 col-lg-4">
+              <input style={{width:'100%'}} type="text"/>
+            </div>
+            {/* <div className="">test2</div> */}
+          </div>
+      </div>
+      <div className={s.tv_show}>tv_show</div>
+      <div className={s.recomended_tv_shows}>recommended_tv_shows</div>
     </div>
   );
 }
