@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { TVShowAPI } from "./api/tv-shows";
+import { TVShowDetail } from "./components/TVShowDetail";
 import s from "./style.module.css";
 import { useEffect } from "react";
-const BACKDROPBASE_URL = 'https://image.tmdb.org/t/p/original';
+const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 
 function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
@@ -42,7 +43,9 @@ function App() {
           {/* <div className="">test2</div> */}
         </div>
       </div>
-      <div className={s.tv_show}>tv_show</div>
+      <div className={s.tv_show_details}>
+        {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
+      </div>
       <div className={s.recomended_tv_shows}>recommended_tv_shows</div>
     </div>
   );
