@@ -3,6 +3,8 @@ import { TVShowAPI } from "./api/tv-shows";
 import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
 import s from "./style.module.css";
 import { useEffect } from "react";
+import { Logo } from "./components/Logo/Logo";
+import logoImg from "./assets/images/clapperboard.png";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 
 function App() {
@@ -34,8 +36,7 @@ function App() {
       <div className={s.header}>
         <div className="row">
           <div className="col-4">
-            <div>Logo</div>
-            <div>subtitle</div>
+            <Logo img={logoImg} title="OnWatch" subtitle="The best films" />
           </div>
           <div className="col-md-12 col-lg-4">
             <input style={{ width: "100%" }} type="text" />

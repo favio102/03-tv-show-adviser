@@ -2,8 +2,6 @@ import {
   StarFill,
   StarHalf,
   Star as StarEmpty,
-  XLg,
-  PenFill
 } from "react-bootstrap-icons";
 
 export function FiveStarRating({ rating }) {
@@ -24,8 +22,6 @@ export function FiveStarRating({ rating }) {
   return (
     <>
       {starList}
-      <XLg/>
-      <PenFill />
     </>
   );
 }
