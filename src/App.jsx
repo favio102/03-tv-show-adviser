@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TVShowAPI } from "./api/tv-shows";
-import { TVShowDetail } from "./components/TVShowDetail";
+import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
 import s from "./style.module.css";
 import { useEffect } from "react";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";

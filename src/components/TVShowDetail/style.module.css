@@ -2,7 +2,13 @@
   font-weight: 400;
   font-size: 35px;
 }
-.rating {}
+.rating {
+  margin-left: 5px;
+}
+
+.rating_container {
+  display: flex;
+}
 
 .overview:hover {
   overflow-y: auto;

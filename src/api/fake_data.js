@@ -13,7 +13,7 @@ export const FAKE_POPULARS = [
     poster_path: "/onSD9UXfJwrMXWhq7UY7hGF2S1h.jpg",
     first_air_date: "2009-07-16",
     name: "Watch What Happens Live with Andy Cohen",
-    vote_average: 5.25,
+    vote_average: 3.01,
     vote_count: 38,
   },
 ];
