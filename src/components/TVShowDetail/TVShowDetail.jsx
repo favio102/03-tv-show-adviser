@@ -3,7 +3,7 @@ import s from "./style.module.css";
 
 export function TVShowDetail({ tvShow }) {
   const rating = tvShow.vote_average / 2;
-  
+
   return (
     <div>
       <div className={s.title}>{tvShow.name}</div>
@@ -12,7 +12,6 @@ export function TVShowDetail({ tvShow }) {
         <span className={s.rating}>{rating}/5</span>
       </div>
       <div className={s.overview}>{tvShow.overview}</div>
-      <div className={s.overview}>{tvShow.vote_count}</div>
     </div>
   );
 }

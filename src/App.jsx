@@ -5,6 +5,7 @@ import s from "./style.module.css";
 import { useEffect } from "react";
 import { Logo } from "./components/Logo/Logo";
 import logoImg from "./assets/images/clapperboard.png";
+import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 
 function App() {
@@ -47,7 +48,36 @@ function App() {
       <div className={s.tv_show_details}>
         {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
-      <div className={s.recomended_tv_shows}>recommended_tv_shows</div>
+      <div className={s.recommended_shows}>
+        {currentTVShow && (
+          <>
+            <TVShowListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("I have been click", tvShow);
+              }}
+            />
+            <TVShowListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("I have been click", tvShow);
+              }}
+            />
+            <TVShowListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("I have been click", tvShow);
+              }}
+            />
+            <TVShowListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("I have been click", tvShow);
+              }}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 }
