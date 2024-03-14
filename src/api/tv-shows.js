@@ -17,7 +17,7 @@ export class TVShowAPI {
     };
     try {
       const response = await axios.request(options);
-      console.log(response.data.results);
+      // console.log(response.data.results);
       return response.data.results;
     } catch (error) {
       console.error(error);
@@ -38,7 +38,7 @@ export class TVShowAPI {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data.results);
+      // console.log(response.data.results);
       return response.data.results;
     } catch (error) {
       console.error(error);
@@ -64,7 +64,7 @@ export class TVShowAPI {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data.results);
+      // console.log(response.data.results);
       return response.data.results;
     } catch (error) {
       console.error(error);
