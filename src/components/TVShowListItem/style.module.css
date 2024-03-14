@@ -4,7 +4,7 @@
 
 .container {
   cursor: pointer;
-  width: 300px;
+  position: relative;
 }
 .title {
   position: absolute;

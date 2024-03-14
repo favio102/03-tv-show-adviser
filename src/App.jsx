@@ -6,10 +6,12 @@ import { useEffect } from "react";
 import { Logo } from "./components/Logo/Logo";
 import logoImg from "./assets/images/clapperboard.png";
 import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
+import { TVShowList } from "./components/TVShowList/TVShowList";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 
 function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
+  const [recommendationList, setRecommendationList] = useState([]);
 
   async function fetchPopulars() {
     const popularTVShowList = await TVShowAPI.fetchPopulars();
@@ -18,11 +20,26 @@ function App() {
     }
   }
 
+  async function fetchRecommendations(tvShowId) {
+    const recommendationListResp = await TVShowAPI.fetchRecommendations(
+      tvShowId
+    );
+    if (recommendationListResp.length > 0) {
+      setRecommendationList(recommendationListResp.slice(0, 10));
+    }
+  }
+
   useEffect(() => {
     fetchPopulars();
   }, []);
-
   console.log(currentTVShow);
+
+  useEffect(() => {
+    if (currentTVShow) {
+      fetchRecommendations(currentTVShow.id);
+    }
+  }, [currentTVShow]);
+  console.log(recommendationList);
 
   return (
     <div
@@ -49,34 +66,7 @@ function App() {
         {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {currentTVShow && (
-          <>
-            <TVShowListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("I have been click", tvShow);
-              }}
-            />
-            <TVShowListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("I have been click", tvShow);
-              }}
-            />
-            <TVShowListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("I have been click", tvShow);
-              }}
-            />
-            <TVShowListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("I have been click", tvShow);
-              }}
-            />
-          </>
-        )}
+        {currentTVShow && <TVShowList tvShowList={recommendationList} />}
       </div>
     </div>
   );

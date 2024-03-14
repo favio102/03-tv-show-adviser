@@ -1,0 +1,17 @@
+.title {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.list:hover {
+  overflow: overlay;
+}
+.list {
+  display: flex;
+  overflow: hidden;
+}
+
+.tv_show_item {
+  margin-right: 20px;
+}
