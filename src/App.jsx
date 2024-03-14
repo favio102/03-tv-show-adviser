@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TVShowAPI } from "./api/tv-shows";
-import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
 import s from "./style.module.css";
-import { useEffect } from "react";
+import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
 import { Logo } from "./components/Logo/Logo";
 import logoImg from "./assets/images/clapperboard.png";
-import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 import { TVShowList } from "./components/TVShowList/TVShowList";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
@@ -13,22 +11,6 @@ const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
   const [recommendationList, setRecommendationList] = useState([]);
-
-  async function fetchPopulars() {
-    const popularTVShowList = await TVShowAPI.fetchPopulars();
-    if (popularTVShowList.length > 0) {
-      setCurrentTVShow(popularTVShowList[0]);
-    }
-  }
-
-  async function fetchRecommendations(tvShowId) {
-    const recommendationListResp = await TVShowAPI.fetchRecommendations(
-      tvShowId
-    );
-    if (recommendationListResp.length > 0) {
-      setRecommendationList(recommendationListResp.slice(0, 5));
-    }
-  }
 
   useEffect(() => {
     fetchPopulars();
@@ -42,8 +24,31 @@ function App() {
   }, [currentTVShow]);
   // console.log(recommendationList);
 
+  async function fetchPopulars() {
+    const popularTVShowList = await TVShowAPI.fetchPopulars();
+    if (popularTVShowList.length > 0) {
+      setCurrentTVShow(popularTVShowList[0]);
+    }
+  }
+
+  async function fetchRecommendations(tvShowId) {
+    const recommendationListResp = await TVShowAPI.fetchRecommendations(
+      tvShowId
+    );
+    if (recommendationListResp.length > 0) {
+      setRecommendationList(recommendationListResp.slice(0, 10));
+    }
+  }
+
   function updateCurrentTVShow(tvShow) {
     setCurrentTVShow(tvShow);
+  }
+
+  async function fetchByTitle(title) {
+    const searchResponse = await TVShowAPI.fetchByTitle(title);
+    if (searchResponse.length > 0) {
+      setCurrentTVShow(searchResponse[0]);
+    }
   }
 
   return (
@@ -62,7 +67,7 @@ function App() {
             <Logo img={logoImg} title="OnWatch" subtitle="The TV Shows" />
           </div>
           <div className="col-md-12 col-lg-4">
-            <SearchBar />
+            <SearchBar onSubmit={fetchByTitle} />
           </div>
         </div>
       </div>
@@ -70,7 +75,12 @@ function App() {
         {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {currentTVShow && <TVShowList onClickItem={updateCurrentTVShow} tvShowList={recommendationList} />}
+        {currentTVShow && (
+          <TVShowList
+            onClickItem={updateCurrentTVShow}
+            tvShowList={recommendationList}
+          />
+        )}
       </div>
     </div>
   );
