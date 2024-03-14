@@ -10,6 +10,8 @@
 .list {
   display: flex;
   overflow: hidden;
+  padding-bottom: 30px;
+
 }
 
 .tv_show_item {
