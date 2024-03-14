@@ -25,21 +25,25 @@ function App() {
       tvShowId
     );
     if (recommendationListResp.length > 0) {
-      setRecommendationList(recommendationListResp.slice(0, 10));
+      setRecommendationList(recommendationListResp.slice(0, 5));
     }
   }
 
   useEffect(() => {
     fetchPopulars();
   }, []);
-  console.log(currentTVShow);
+  // console.log(currentTVShow);
 
   useEffect(() => {
     if (currentTVShow) {
       fetchRecommendations(currentTVShow.id);
     }
   }, [currentTVShow]);
-  console.log(recommendationList);
+  // console.log(recommendationList);
+
+  function updateCurrentTVShow(tvShow) {
+    setCurrentTVShow(tvShow);
+  }
 
   return (
     <div
@@ -54,7 +58,7 @@ function App() {
       <div className={s.header}>
         <div className="row">
           <div className="col-4">
-            <Logo img={logoImg} title="OnWatch" subtitle="The best films" />
+            <Logo img={logoImg} title="OnWatch" subtitle="The TV Shows" />
           </div>
           <div className="col-md-12 col-lg-4">
             <input style={{ width: "100%" }} type="text" />
@@ -66,7 +70,7 @@ function App() {
         {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {currentTVShow && <TVShowList tvShowList={recommendationList} />}
+        {currentTVShow && <TVShowList onClickItem={updateCurrentTVShow} tvShowList={recommendationList} />}
       </div>
     </div>
   );
