@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { FAKE_POPULARS, FAKE_RECOMMENDATION } from "./fake_data";
 
-// const APIKey = process.env.REACT_APP_API_KEY;
+const APIKey = process.env.REACT_APP_API_KEY;
 const APIToken = process.env.REACT_APP_TOKEN;
 
 export class TVShowAPI {
