@@ -7,6 +7,7 @@ import { Logo } from "./components/Logo/Logo";
 import logoImg from "./assets/images/clapperboard.png";
 import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 import { TVShowList } from "./components/TVShowList/TVShowList";
+import { SearchBar } from "./components/SearchBar/SearchBar";
 const BACKDROPBASE_URL = "https://image.tmdb.org/t/p/original";
 
 function App() {
@@ -61,9 +62,8 @@ function App() {
             <Logo img={logoImg} title="OnWatch" subtitle="The TV Shows" />
           </div>
           <div className="col-md-12 col-lg-4">
-            <input style={{ width: "100%" }} type="text" />
+            <SearchBar />
           </div>
-          {/* <div className="">test2</div> */}
         </div>
       </div>
       <div className={s.tv_show_details}>
