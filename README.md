@@ -1,3 +1,7 @@
+# TV Show Adviser
+
+<img width="1280" alt="Screenshot 2024-03-19 at 6 16 34 AM" src="https://github.com/favio102/Tv-Show-Adviser/assets/93895982/f6fa67e3-59c4-4ef1-ae39-158969636c90">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
